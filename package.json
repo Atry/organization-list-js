@@ -1,0 +1,28 @@
+{
+  "name": "organization-list-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atry/organization-list-js.git"
+  },
+  "keywords": [
+    "microbuilder",
+    "github"
+  ],
+  "author": "Yang Bo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Atry/organization-list-js/issues"
+  },
+  "homepage": "https://github.com/Atry/organization-list-js#readme",
+  "dependencies": {
+    "browser-request": "^0.3.3",
+    "github-sdk": "http://central.maven.org/maven2/com/thoughtworks/microbuilder/tutorial/github-sdk_2.11/1.0.3/github-sdk_2.11-1.0.3-haxe-js-npm.tgz",
+    "microbuilder-js": "http://central.maven.org/maven2/com/thoughtworks/microbuilder/microbuilder-js/1.0.0/microbuilder-js-1.0.0-haxe-js-npm.tgz"
+  }
+}

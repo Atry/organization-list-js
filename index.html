@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script type="text/javascript" src="node_modules/browser-request/index.js"></script>
+    <script type="text/javascript">request = window.returnExports;</script>
+    <script type="text/javascript" src="node_modules/microbuilder-js/index.js"></script>
+    <script type="text/javascript" src="node_modules/github-sdk/index.js"></script>
+    <script type="text/javascript">
+      var urlPrefix = "https://api.github.com/";
+
+      var routeConfiguration = com.thoughtworks.microbuilder.tutorial.githubSdk.proxy.MicrobuilderRouteConfigurationFactory.routeConfiguration_com_thoughtworks_microbuilder_tutorial_githubSdk_rpc_IOrganizationService();
+      var outgoingJsonService = new com.thoughtworks.microbuilder.js.JsOutgoingJsonService(urlPrefix, routeConfiguration, request);
+      var organizationService = com.thoughtworks.microbuilder.tutorial.githubSdk.proxy.MicrobuilderOutgoingProxyFactory.outgoingProxy_com_thoughtworks_microbuilder_tutorial_githubSdk_rpc_IOrganizationService(outgoingJsonService);
+    </script>
+
+    <script type="text/javascript">
+      function updateOrganizationList(username) {
+        organizationService.listUserOrganizations(username).then(function(organizations) {
+          var organizationList = document.getElementById("organization-list");
+
+          // Clear all child nodes in organization-list
+          while (organizationList.childNodes.length > 0) {
+            organizationList.removeChild(organizationList.firstChild);
+          }
+
+          for (var i = 0; i < organizations.length; i++) {
+            var organization = organizations[i];
+
+            var img = document.createElement("img");
+            img.src = organization.avatar_url;
+            img.width = 20;
+            img.height = 20;
+            img.title = organization.description;
+
+            var text = document.createTextNode(organization.login);
+
+            var li = document.createElement("li");
+            li.appendChild(img);
+            li.appendChild(text);
+
+            organizationList.appendChild(li);
+          }
+        });
+      }
+    </script>
+    </head>
+  <body>
+    Github user name: <input type="text" onchange="updateOrganizationList(this.value)"/>
+    <hr/>
+    <ul id="organization-list">
+    </ul>
+  </body>
+</html>
